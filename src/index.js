@@ -14,4 +14,4 @@ ReactDOM.render(
   document.getElementById('root'),
 );
 
-ReactDOM.render(<App />, document.querySelector('#root'));
+// ReactDOM.render(<App />, document.querySelector('#root'));

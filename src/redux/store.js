@@ -1,11 +1,22 @@
 import { createStore } from 'redux';
 
 const initialState = {
-  contact: [],
+  contacts: [],
+  filter: '',
 };
 
-const contactReducer = (state = initialState, actions) => {};
+const appReducer = (state = initialState, { type, payload }) => {
+  switch (type) {
+    case 'app/getData':
+      return {
+        ...state,
+        contacts: [...state.contacts, payload],
+      };
+    default:
+      return state;
+  }
+};
 
-const store = createStore(contactReducer);
+const store = createStore(appReducer);
 
 export default store;

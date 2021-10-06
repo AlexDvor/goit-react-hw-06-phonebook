@@ -3,10 +3,13 @@ import { v4 as uuidv4 } from 'uuid';
 import { useState } from 'react';
 import ButtonItem from '../Button';
 import PropTypes from 'prop-types';
+import * as actions from '../../redux/app/app-actions';
+import { connect } from 'react-redux';
+
 // style
 import { FormItem, Input } from './Form.styled.jsx';
 
-export default function Form({ getData }) {
+function Form({ getData }) {
   const [name, setName] = useState('');
   const [id, setId] = useState('');
   const [number, setNumber] = useState('');
@@ -85,3 +88,9 @@ Form.propTypes = {
   handleSubmit: PropTypes.func,
   resetForm: PropTypes.func,
 };
+
+const mapDispatchToProps = dispatch => ({
+  getData: obj => dispatch(actions.getData(obj)),
+});
+
+export default connect(null, mapDispatchToProps)(Form);

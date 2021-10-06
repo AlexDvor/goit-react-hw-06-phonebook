@@ -3,6 +3,8 @@ import { useState, useEffect } from 'react';
 import Form from './components/Form';
 import Contact from './components/Contact';
 import Filter from './components/Filter';
+import { connect } from 'react-redux';
+import * as actions from './redux/app/app-actions';
 
 // const useLocalStorage = (key, defaultValue) => {
 //   const [state, setState] = useState(() => {
@@ -12,48 +14,58 @@ import Filter from './components/Filter';
 //   return [state, setState];
 // };
 
-export default function App() {
+function App({ contacts, filter, getData }) {
   // const [contacts, setContacts] = useLocalStorage('contacts', []);
-  const [contacts, setContacts] = useState([]);
-  const [filter, setFilter] = useState('');
+  // const [contacts, setContacts] = useState([]);
+  // const [filter, setFilter] = useState('');
 
-  useEffect(() => {
-    window.localStorage.setItem('contacts', JSON.stringify(contacts));
-  }, [contacts]);
+  // useEffect(() => {
+  //   window.localStorage.setItem('contacts', JSON.stringify(contacts));
+  // }, [contacts]);
 
-  const getData = ({ name, id, number }) => {
-    const newContacts = {
-      name,
-      id,
-      number,
-    };
-    updateContacts(newContacts);
-  };
+  // const getData = ({ name, id, number }) => {
+  //   const newContacts = {
+  //     name,
+  //     id,
+  //     number,
+  //   };
+  //   updateContacts(newContacts);
+  // };
 
-  const updateContacts = newData => {
-    console.log(contacts);
-    contacts.some(item => item.name === newData.name)
-      ? alert(`${newData.name} is already in contacts`)
-      : setContacts(prevState => [...prevState, newData]);
-  };
+  // const updateContacts = newData => {
+  //   console.log(contacts);
+  //   contacts.some(item => item.name === newData.name)
+  //     ? alert(`${newData.name} is already in contacts`)
+  //     : setContacts(prevState => [...prevState, newData]);
+  // };
 
-  const handleFilterByName = e => setFilter(e.target.value);
+  // const handleFilterByName = e => setFilter(e.target.value);
 
-  const renderListName = (array, name) => {
-    return array.filter(item => item.name.toLowerCase().includes(name.toLowerCase()));
-  };
+  // const renderListName = (array, name) => {
+  //   return array.filter(item => item.name.toLowerCase().includes(name.toLowerCase()));
+  // };
 
-  const deleteNameItem = id => {
-    setContacts(prevState => prevState.filter(item => item.id !== id));
-  };
+  // const deleteNameItem = id => {
+  //   setContacts(prevState => prevState.filter(item => item.id !== id));
+  // };
 
   return (
     <Container>
       <h2>Phonebook</h2>
-      <Form getData={getData} />
+      <Form />
       <h2>Contacts</h2>
-      <Filter filter={filter} onChange={handleFilterByName} />
-      <Contact data={renderListName(contacts, filter)} onDeleteNameItem={deleteNameItem}></Contact>
+      {/* <Filter filter={filter} onChange={handleFilterByName} /> */}
+      {/* <Contact data={renderListName(contacts, filter)} onDeleteNameItem={deleteNameItem}></Contact> */}
     </Container>
   );
 }
+
+const mapStateToProps = state => ({
+  contacts: state,
+});
+
+// const mapDispatchToProps = dispatch => ({
+//   getData: () => dispatch(actions.getData()),
+// });
+
+export default connect(mapStateToProps)(App);
