@@ -12,6 +12,12 @@ const appReducer = (state = initialState, { type, payload }) => {
         ...state,
         contacts: [...state.contacts, payload],
       };
+    case 'filter/handleFilterByName':
+      return {
+        ...state,
+        filter: payload,
+      };
+
     default:
       return state;
   }

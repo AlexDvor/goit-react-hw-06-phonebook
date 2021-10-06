@@ -14,7 +14,7 @@ import * as actions from './redux/app/app-actions';
 //   return [state, setState];
 // };
 
-function App({ contacts, filter, getData }) {
+function App({ contacts, filter }) {
   // const [contacts, setContacts] = useLocalStorage('contacts', []);
   // const [contacts, setContacts] = useState([]);
   // const [filter, setFilter] = useState('');
@@ -54,7 +54,7 @@ function App({ contacts, filter, getData }) {
       <h2>Phonebook</h2>
       <Form />
       <h2>Contacts</h2>
-      {/* <Filter filter={filter} onChange={handleFilterByName} /> */}
+      <Filter />
       {/* <Contact data={renderListName(contacts, filter)} onDeleteNameItem={deleteNameItem}></Contact> */}
     </Container>
   );

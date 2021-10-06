@@ -6,3 +6,8 @@ export const getData = ({ name, id, number }) => ({
     number,
   },
 });
+
+export const handleFilterByName = string => ({
+  type: 'filter/handleFilterByName',
+  payload: string,
+});
