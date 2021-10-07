@@ -1,5 +1,5 @@
-export const getData = ({ name, id, number }) => ({
-  type: 'app/getData',
+export const addContacts = ({ name, id, number }) => ({
+  type: 'app/addContacts',
   payload: {
     name,
     id,

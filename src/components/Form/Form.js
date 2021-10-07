@@ -9,7 +9,7 @@ import { connect } from 'react-redux';
 // style
 import { FormItem, Input } from './Form.styled.jsx';
 
-function Form({ getData }) {
+function Form({ addContacts }) {
   const [name, setName] = useState('');
   const [id, setId] = useState('');
   const [number, setNumber] = useState('');
@@ -41,7 +41,8 @@ function Form({ getData }) {
       id: id,
       number: number,
     };
-    getData(contactData);
+    addContacts(contactData);
+
     resetForm();
   };
 
@@ -90,7 +91,7 @@ Form.propTypes = {
 };
 
 const mapDispatchToProps = dispatch => ({
-  getData: obj => dispatch(actions.getData(obj)),
+  addContacts: obj => dispatch(actions.addContacts(obj)),
 });
 
 export default connect(null, mapDispatchToProps)(Form);
