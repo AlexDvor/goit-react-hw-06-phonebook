@@ -5,6 +5,10 @@ const contactsReducer = (state = [], { type, payload }) => {
   switch (type) {
     case 'app/addContacts':
       return [...state, payload];
+
+    case 'contactsList / deleteUserContacts':
+      return state.filter(item => item.id !== payload);
+
     default:
       return state;
   }

@@ -1,13 +1,15 @@
-import { Button } from "./ContactList.styled";
-import PropTypes from "prop-types";
+import { Button } from './ContactList.styled';
+import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
+import * as actions from '../../redux/app/app-actions';
 
-function ContactList({ data, onDeleteNameItem }) {
+function ContactList({ data, onDeleteUserContact }) {
   return (
     <>
       {data.map(({ name, id, number }) => (
         <li key={id}>
           {name} : {number}
-          <Button onClick={() => onDeleteNameItem(id)}>Delete</Button>
+          <Button onClick={() => onDeleteUserContact(id)}>Delete</Button>
         </li>
       ))}
     </>
@@ -20,8 +22,16 @@ ContactList.propTypes = {
       name: PropTypes.string.isRequired,
       id: PropTypes.string.isRequired,
       number: PropTypes.string.isRequired,
-    })
+    }),
   ),
 };
 
-export default ContactList;
+const mapStateToProps = state => ({
+  data: state.contacts,
+});
+
+const mapDispatchToProps = dispatch => ({
+  onDeleteUserContact: id => dispatch(actions.deleteUserContacts(id)),
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(ContactList);

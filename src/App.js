@@ -55,7 +55,7 @@ function App({ contacts, filter }) {
       <Form />
       <h2>Contacts</h2>
       <Filter />
-      {/* <Contact data={renderListName(contacts, filter)} onDeleteNameItem={deleteNameItem}></Contact> */}
+      <Contact />
     </Container>
   );
 }

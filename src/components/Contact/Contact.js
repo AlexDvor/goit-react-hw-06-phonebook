@@ -1,22 +1,13 @@
-import ContactList from "./ContactList";
-import PropTypes from "prop-types";
+import ContactList from './ContactList';
 
-function Contact({ data, onDeleteNameItem }) {
+function Contact() {
   return (
     <>
       <ul>
-        <ContactList
-          data={data}
-          onDeleteNameItem={onDeleteNameItem}
-        ></ContactList>
+        <ContactList></ContactList>
       </ul>
     </>
   );
 }
-
-Contact.propTypes = {
-  data: PropTypes.array,
-  onDeleteNameItem: PropTypes.func,
-};
 
 export default Contact;
