@@ -41,8 +41,8 @@ function Form({ addContacts }) {
       id: id,
       number: number,
     };
-    addContacts(contactData);
 
+    addContacts(contactData);
     resetForm();
   };
 
