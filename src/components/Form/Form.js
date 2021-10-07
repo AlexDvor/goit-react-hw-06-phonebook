@@ -98,7 +98,7 @@ Form.propTypes = {
 };
 
 const mapStateToProps = state => ({
-  state: state.contacts,
+  state: state.items,
 });
 
 const mapDispatchToProps = dispatch => ({

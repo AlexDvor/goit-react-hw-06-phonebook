@@ -21,7 +21,7 @@ function ContactList({ dataUsers, name, onDeleteUserContact }) {
 }
 
 const mapStateToProps = state => ({
-  dataUsers: state.contacts,
+  dataUsers: state.items,
   name: state.filter,
 });
 

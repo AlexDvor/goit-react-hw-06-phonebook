@@ -6,16 +6,7 @@ import Filter from './components/Filter';
 import { connect } from 'react-redux';
 import * as actions from './redux/app/app-actions';
 
-// const useLocalStorage = (key, defaultValue) => {
-//   const [state, setState] = useState(() => {
-//     return JSON.parse(window.localStorage.getItem(key)) ?? defaultValue;
-//   });
-
-//   return [state, setState];
-// };
-
 function App({ contacts, filter }) {
-  // const [contacts, setContacts] = useLocalStorage('contacts', []);
   // const [contacts, setContacts] = useState([]);
   // const [filter, setFilter] = useState('');
 
@@ -55,7 +46,7 @@ function App({ contacts, filter }) {
       <Form />
       <h2>Contacts</h2>
       <Filter />
-      <Contact />
+      <Contact />+
     </Container>
   );
 }

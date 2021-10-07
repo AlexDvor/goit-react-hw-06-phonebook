@@ -1,12 +1,13 @@
 import { createStore, combineReducers } from 'redux';
 import { composeWithDevTools } from 'redux-devtools-extension';
+import types from './app/app-types';
 
 const contactsReducer = (state = [], { type, payload }) => {
   switch (type) {
-    case 'app/addContacts':
+    case types.ADD:
       return [...state, payload];
 
-    case 'contactsList / deleteUserContacts':
+    case types.DELETE:
       return state.filter(item => item.id !== payload);
 
     default:
@@ -16,7 +17,7 @@ const contactsReducer = (state = [], { type, payload }) => {
 
 const filterReducer = (state = '', { type, payload }) => {
   switch (type) {
-    case 'filter/handleFilterByName':
+    case types.FILTER_NAME:
       return (state = payload);
 
     default:
@@ -25,7 +26,7 @@ const filterReducer = (state = '', { type, payload }) => {
 };
 
 const rootReducer = combineReducers({
-  contacts: contactsReducer,
+  items: contactsReducer,
   filter: filterReducer,
 });
 
