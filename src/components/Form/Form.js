@@ -37,11 +37,10 @@ function Form({ addContacts, state }) {
   const handleSubmit = e => {
     e.preventDefault();
     const contactData = {
-      name: name,
+      name,
       id: id,
       number: number,
     };
-
     checkUserName(state, contactData);
     resetForm();
   };
@@ -98,7 +97,7 @@ Form.propTypes = {
 };
 
 const mapStateToProps = state => ({
-  state: state.items,
+  state: state.contacts.items,
 });
 
 const mapDispatchToProps = dispatch => ({

@@ -4,25 +4,34 @@ import { connect } from 'react-redux';
 import * as actions from '../../redux/Contact/contact-actions';
 
 function ContactList({ dataUsers, name, deleteContact }) {
-  const renderUserContacts = dataUsers.filter(item =>
-    item.name.toLowerCase().includes(name.toLowerCase()),
-  );
+  // const renderUserContacts = dataUsers.filter(item =>
+  //   item.name.toLowerCase().includes(name.toLowerCase()),
+  // );
+
+  const renderUserContacts = dataUsers => {
+    if (dataUsers) {
+      return dataUsers.filter(item => item.name.toLowerCase().includes(name.toLowerCase()));
+    }
+  };
+
+  const visibleContacts = renderUserContacts(dataUsers);
 
   return (
     <>
-      {renderUserContacts.map(({ name, id, number }) => (
-        <li key={id}>
-          {name} : {number}
-          <Button onClick={() => deleteContact(id)}>Delete</Button>
-        </li>
-      ))}
+      {visibleContacts &&
+        visibleContacts.map(({ name, id, number }) => (
+          <li key={id}>
+            {name} : {number}
+            <Button onClick={() => deleteContact(id)}>Delete</Button>
+          </li>
+        ))}
     </>
   );
 }
 
 const mapStateToProps = state => ({
-  dataUsers: state.items,
-  name: state.filter,
+  dataUsers: state.contacts.items,
+  name: state.contacts.filter,
 });
 
 const mapDispatchToProps = dispatch => ({

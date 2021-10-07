@@ -18,7 +18,7 @@ function Filter({ filter, onChange }) {
 }
 
 const mapStateToProps = state => ({
-  filter: state.filter,
+  filter: state.contacts.filter,
 });
 
 const mapDispatchToProps = dispatch => ({
