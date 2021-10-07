@@ -43,29 +43,15 @@ function Form({ addContacts, state }) {
     };
 
     checkUserName(state, contactData);
-    // addContacts(contactData);
-    // resetForm();
+    resetForm();
   };
-
-  // if (prevState.some(item => item.name === contactData.name)) {
-  //   return alert(`${contactData.name} is already in contacts`);
-  // } else {
-  //   return addContacts(contactData), resetForm();
-  // }
 
   const checkUserName = (userData, newData) => {
     if (userData.some(item => item.name === newData.name)) {
       return alert(`${newData.name} is already in contacts`);
     }
     addContacts(newData);
-    resetForm();
   };
-
-  //   if (userData.some(item => item.name === newData.name))
-  //     return alert(`${newData.name} is already in contacts`);
-  // }
-  // addContacts(newData);
-  // resetForm();
 
   const resetForm = () => {
     setName('');
