@@ -1,7 +1,7 @@
 import { Button } from './ContactList.styled';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import * as actions from '../../redux/app/app-actions';
+import * as actions from '../../redux/Contact/contact-actions';
 
 function ContactList({ dataUsers, name, onDeleteUserContact }) {
   const renderUserContacts = dataUsers.filter(item =>
@@ -26,7 +26,7 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-  onDeleteUserContact: id => dispatch(actions.deleteUserContacts(id)),
+  onDeleteUserContact: id => dispatch(actions.deleteContacts(id)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(ContactList);

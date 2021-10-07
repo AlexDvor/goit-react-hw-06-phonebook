@@ -1,10 +1,9 @@
 import { Container } from './components/Container/Container';
-import { useState, useEffect } from 'react';
+// import { useState, useEffect } from 'react';
 import Form from './components/Form';
 import Contact from './components/Contact';
 import Filter from './components/Filter';
 import { connect } from 'react-redux';
-import * as actions from './redux/app/app-actions';
 
 function App({ contacts, filter }) {
   // const [contacts, setContacts] = useState([]);
@@ -51,12 +50,8 @@ function App({ contacts, filter }) {
   );
 }
 
-const mapStateToProps = state => ({
-  contacts: state,
-});
-
 // const mapDispatchToProps = dispatch => ({
 //   getData: () => dispatch(actions.getData()),
 // });
 
-export default connect(mapStateToProps)(App);
+export default connect(null, null)(App);

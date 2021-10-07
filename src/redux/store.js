@@ -1,13 +1,15 @@
 import { createStore, combineReducers } from 'redux';
 import { composeWithDevTools } from 'redux-devtools-extension';
-import types from './app/app-types';
+import types_contact from './Contact/contacts-types';
+import types_filter from './Filter/filter-types';
+import types_form from './Form/form-types';
 
 const contactsReducer = (state = [], { type, payload }) => {
   switch (type) {
-    case types.ADD:
+    case types_form.ADD:
       return [...state, payload];
 
-    case types.DELETE:
+    case types_contact.DELETE:
       return state.filter(item => item.id !== payload);
 
     default:
@@ -17,7 +19,7 @@ const contactsReducer = (state = [], { type, payload }) => {
 
 const filterReducer = (state = '', { type, payload }) => {
   switch (type) {
-    case types.FILTER_NAME:
+    case types_filter.FILTER_NAME:
       return (state = payload);
 
     default:
