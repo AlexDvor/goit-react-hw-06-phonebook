@@ -3,10 +3,14 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import * as actions from '../../redux/app/app-actions';
 
-function ContactList({ data, onDeleteUserContact }) {
+function ContactList({ dataUsers, name, onDeleteUserContact }) {
+  const renderUserContacts = dataUsers.filter(item =>
+    item.name.toLowerCase().includes(name.toLowerCase()),
+  );
+
   return (
     <>
-      {data.map(({ name, id, number }) => (
+      {renderUserContacts.map(({ name, id, number }) => (
         <li key={id}>
           {name} : {number}
           <Button onClick={() => onDeleteUserContact(id)}>Delete</Button>
@@ -15,6 +19,17 @@ function ContactList({ data, onDeleteUserContact }) {
     </>
   );
 }
+
+const mapStateToProps = state => ({
+  dataUsers: state.contacts,
+  name: state.filter,
+});
+
+const mapDispatchToProps = dispatch => ({
+  onDeleteUserContact: id => dispatch(actions.deleteUserContacts(id)),
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(ContactList);
 
 ContactList.propTypes = {
   data: PropTypes.arrayOf(
@@ -25,13 +40,3 @@ ContactList.propTypes = {
     }),
   ),
 };
-
-const mapStateToProps = state => ({
-  data: state.contacts,
-});
-
-const mapDispatchToProps = dispatch => ({
-  onDeleteUserContact: id => dispatch(actions.deleteUserContacts(id)),
-});
-
-export default connect(mapStateToProps, mapDispatchToProps)(ContactList);
