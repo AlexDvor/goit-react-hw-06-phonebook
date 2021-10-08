@@ -1,12 +1,12 @@
-import types_contact from './contacts-types';
+import { DELETE, ADD, FILTER_NAME } from './contacts-types';
 
 export const deleteContacts = id => ({
-  type: types_contact.DELETE,
+  type: DELETE,
   payload: id,
 });
 
 export const addContacts = ({ name, id, number }) => ({
-  type: types_contact.ADD,
+  type: ADD,
   payload: {
     name,
     id,
@@ -15,6 +15,6 @@ export const addContacts = ({ name, id, number }) => ({
 });
 
 export const FilterByName = string => ({
-  type: types_contact.FILTER_NAME,
+  type: FILTER_NAME,
   payload: string,
 });

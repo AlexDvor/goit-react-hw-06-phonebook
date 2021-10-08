@@ -4,10 +4,6 @@ import { connect } from 'react-redux';
 import * as actions from '../../redux/Contact/contact-actions';
 
 function ContactList({ dataUsers, name, deleteContact }) {
-  // const renderUserContacts = dataUsers.filter(item =>
-  //   item.name.toLowerCase().includes(name.toLowerCase()),
-  // );
-
   const renderUserContacts = dataUsers => {
     if (dataUsers) {
       return dataUsers.filter(item => item.name.toLowerCase().includes(name.toLowerCase()));

@@ -1,12 +1,12 @@
 import { combineReducers } from 'redux';
-import types_contact from './contacts-types';
+import { DELETE, ADD, FILTER_NAME } from './contacts-types';
 
 const itemReducer = (state = [], { type, payload }) => {
   switch (type) {
-    case types_contact.ADD:
+    case ADD:
       return [...state, payload];
 
-    case types_contact.DELETE:
+    case DELETE:
       return state.filter(item => item.id !== payload);
 
     default:
@@ -16,7 +16,7 @@ const itemReducer = (state = [], { type, payload }) => {
 
 const filterReducer = (state = '', { type, payload }) => {
   switch (type) {
-    case types_contact.FILTER_NAME:
+    case FILTER_NAME:
       return (state = payload);
 
     default:
