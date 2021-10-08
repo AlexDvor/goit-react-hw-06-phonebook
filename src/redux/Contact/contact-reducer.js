@@ -1,6 +1,5 @@
 import { combineReducers } from 'redux';
 import types_contact from './contacts-types';
-import types_filter from '../Filter/filter-types';
 
 const itemReducer = (state = [], { type, payload }) => {
   switch (type) {
@@ -17,7 +16,7 @@ const itemReducer = (state = [], { type, payload }) => {
 
 const filterReducer = (state = '', { type, payload }) => {
   switch (type) {
-    case types_filter.FILTER_NAME:
+    case types_contact.FILTER_NAME:
       return (state = payload);
 
     default:

@@ -13,3 +13,8 @@ export const addContacts = ({ name, id, number }) => ({
     number,
   },
 });
+
+export const FilterByName = string => ({
+  type: types_contact.FILTER_NAME,
+  payload: string,
+});
