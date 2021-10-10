@@ -4,15 +4,16 @@ import { useState } from 'react';
 import ButtonItem from '../Button';
 import PropTypes from 'prop-types';
 import * as actions from '../../redux/Contact/contact-actions';
-import { connect } from 'react-redux';
-
+import { useSelector, useDispatch } from 'react-redux';
 // style
 import { FormItem, Input } from './Form.styled.jsx';
 
-function Form({ addContacts, state }) {
+export default function Form() {
   const [name, setName] = useState('');
   const [id, setId] = useState('');
   const [number, setNumber] = useState('');
+  const state = useSelector(state => state.contacts.items);
+  const dispatch = useDispatch();
 
   const handleChange = ({ target }) => {
     const { name, value } = target;
@@ -49,7 +50,7 @@ function Form({ addContacts, state }) {
     if (userData.some(item => item.name === newData.name)) {
       return alert(`${newData.name} is already in contacts`);
     }
-    addContacts(newData);
+    dispatch(actions.addContacts(newData));
   };
 
   const resetForm = () => {
@@ -96,12 +97,12 @@ Form.propTypes = {
   resetForm: PropTypes.func,
 };
 
-const mapStateToProps = state => ({
-  state: state.contacts.items,
-});
+// const mapStateToProps = state => ({
+//   state: state.contacts.items,
+// });
 
-const mapDispatchToProps = dispatch => ({
-  addContacts: obj => dispatch(actions.addContacts(obj)),
-});
+// const mapDispatchToProps = dispatch => ({
+//   addContacts: obj => dispatch(actions.addContacts(obj)),
+// });
 
-export default connect(mapStateToProps, mapDispatchToProps)(Form);
+// export default connect(mapStateToProps, mapDispatchToProps)(Form);

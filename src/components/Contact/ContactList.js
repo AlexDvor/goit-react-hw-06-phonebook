@@ -1,9 +1,13 @@
 import { Button } from './ContactList.styled';
 import PropTypes from 'prop-types';
-import { connect } from 'react-redux';
 import * as actions from '../../redux/Contact/contact-actions';
+import { useSelector, useDispatch } from 'react-redux';
 
-function ContactList({ dataUsers, name, deleteContact }) {
+export default function ContactList() {
+  const dataUsers = useSelector(state => state.contacts.items);
+  const name = useSelector(state => state.contacts.filter);
+  const dispatch = useDispatch();
+
   const renderUserContacts = dataUsers => {
     if (dataUsers) {
       return dataUsers.filter(item => item.name.toLowerCase().includes(name.toLowerCase()));
@@ -18,23 +22,23 @@ function ContactList({ dataUsers, name, deleteContact }) {
         visibleContacts.map(({ name, id, number }) => (
           <li key={id}>
             {name} : {number}
-            <Button onClick={() => deleteContact(id)}>Delete</Button>
+            <Button onClick={() => dispatch(actions.deleteContacts(id))}>Delete</Button>
           </li>
         ))}
     </>
   );
 }
 
-const mapStateToProps = state => ({
-  dataUsers: state.contacts.items,
-  name: state.contacts.filter,
-});
+// const mapStateToProps = state => ({
+//   dataUsers: state.contacts.items,
+//   name: state.contacts.filter,
+// });
 
-const mapDispatchToProps = dispatch => ({
-  deleteContact: id => dispatch(actions.deleteContacts(id)),
-});
+// const mapDispatchToProps = dispatch => ({
+//   deleteContact: id => dispatch(actions.deleteContacts(id)),
+// });
 
-export default connect(mapStateToProps, mapDispatchToProps)(ContactList);
+// export default connect(mapStateToProps, mapDispatchToProps)(ContactList);
 
 ContactList.propTypes = {
   data: PropTypes.arrayOf(
