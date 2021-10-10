@@ -3,7 +3,7 @@ import { createAction } from '@reduxjs/toolkit';
 
 export const deleteContacts = createAction('contactsList/deleteContacts');
 export const addContacts = createAction('form/addContacts');
-export const FilterByName = createAction('filter/handleFilterByName');
+export const filterByName = createAction('filter/handleFilterByName');
 
 // export const deleteContacts = id => ({
 //   type: DELETE,

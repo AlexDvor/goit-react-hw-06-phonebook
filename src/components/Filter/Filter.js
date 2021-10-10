@@ -22,7 +22,7 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-  onChange: e => dispatch(actions.FilterByName(e.target.value)),
+  onChange: e => dispatch(actions.filterByName(e.target.value)),
 });
 
 Filter.propTypes = {
